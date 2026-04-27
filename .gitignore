@@ -1,0 +1,39 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore all environment files except the example
+.env*
+!.env.example
+
+# Ignore logfiles and tempfiles
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+!/tmp/pids/
+!/tmp/pids/.keep
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Ignore storage (uploaded files)
+/storage/*
+!/storage/.keep
+
+# Ignore master key and credentials
+/config/master.key
+/config/credentials/*.key
+
+# Ignore SQLite database files
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore node_modules (just in case)
+/node_modules
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
