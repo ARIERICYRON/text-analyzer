@@ -42,3 +42,18 @@ curl -X POST http://localhost:3000/analyze \
 - Model: `gpt-4o-mini` (fast and cost-effective)
 - `temperature: 0.3` keeps output focused and consistent
 - `response_format: json_object` enforces valid JSON from the model
+
+## What didn't work at first and how I adjusted
+
+- Started with Python/FastAPI, then switched to Sinatra, then to Rails — iterated based on preference rather than assuming upfront
+- `rails new` used `--skip-git` for speed, which meant no `.gitignore` was generated — caught this before pushing and created one manually, ensuring `.env` was excluded and `.env.example` was kept
+- `bundle install` timed out during scaffolding on Windows — the gems were still resolving in the background, so the app structure was intact and the install completes fine when run manually
+- `git push` couldn't be run automatically because GitHub authentication requires interactive input (username + token) — has to be done manually in the terminal
+- Line ending warnings (LF → CRLF) showed up on `git add` due to Windows — added a `.gitattributes` file with `* text=auto` to normalize this going forward
+
+## What I would improve with more time
+
+- Add RSpec tests with a stubbed OpenAI client so the suite runs without a real API key
+- Add request rate limiting to avoid abuse
+- Extract the model name and temperature into environment variables so they're configurable without touching code
+- Add a simple retry mechanism for transient OpenAI API failures
